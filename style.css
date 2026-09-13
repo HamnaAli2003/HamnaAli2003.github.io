@@ -655,19 +655,11 @@ html.cursor-on * {
 }
 .avatar {
   display: block;
-  width: 232px;
-  filter: drop-shadow(0 24px 46px rgba(139, 92, 246, 0.35));
-}
-.waving-arm {
-  transform-box: fill-box;
-  transform-origin: 0% 100%;
-  animation: handWave 3.4s ease-in-out infinite;
-}
-@keyframes handWave {
-  0%, 100% { transform: rotate(0deg); }
-  18% { transform: rotate(-13deg); }
-  42% { transform: rotate(9deg); }
-  68% { transform: rotate(-5deg); }
+  width: 160px;
+  height: auto;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px -14px rgba(139, 92, 246, 0.45);
 }
 @keyframes floaty {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
