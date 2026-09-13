@@ -655,11 +655,10 @@ html.cursor-on * {
 }
 .avatar {
   display: block;
-  width: 160px;
+  width: 200px;
   height: auto;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 24px 60px -14px rgba(139, 92, 246, 0.45);
+  border-radius: 18px;
+  filter: drop-shadow(0 24px 46px rgba(139, 92, 246, 0.4));
 }
 @keyframes floaty {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
