@@ -267,6 +267,47 @@ if (!prefersReduced) {
   });
 }
 
+/* ---------- Contact form ---------- */
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  const formStatus = document.getElementById("formStatus");
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector(".form-submit");
+    const key = contactForm.access_key.value;
+    if (!key || key.includes("YOUR_")) {
+      formStatus.textContent = "Form not configured yet — email me at malikhamnaali@gmail.com";
+      formStatus.className = "form-status error";
+      return;
+    }
+    btn.disabled = true;
+    const originalHTML = btn.innerHTML;
+    btn.textContent = "Sending...";
+    formStatus.textContent = "";
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(contactForm))),
+      });
+      const data = await res.json();
+      if (data.success) {
+        contactForm.reset();
+        formStatus.textContent = "Message sent! I'll get back to you soon.";
+        formStatus.className = "form-status success";
+      } else {
+        throw new Error(data.message || "Something went wrong");
+      }
+    } catch (err) {
+      formStatus.textContent = "Something went wrong — email me at malikhamnaali@gmail.com";
+      formStatus.className = "form-status error";
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+    }
+  });
+}
+
 /* ---------- Project filters ---------- */
 const filters = document.getElementById("filters");
 const projectsGrid = document.getElementById("projectsGrid");

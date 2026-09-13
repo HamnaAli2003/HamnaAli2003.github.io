@@ -659,6 +659,32 @@
         <h2 class="contact-title">Let's build something <span class="gradient-text">beautiful together.</span></h2>
         <p class="contact-sub">Have a project, a bug to squash, or an idea worth polishing? My inbox is always open.</p>
 
+        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="New Portfolio Message">
+          <input type="hidden" name="from_name" value="Hamna Ali Portfolio">
+          <input type="hidden" name="redirect" value="false">
+          <div class="form-grid">
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" required placeholder="Your name">
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" required placeholder="you@email.com">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            Send Message
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
         <div class="contact-channels">
           <a class="channel" href="mailto:malikhamnaali@gmail.com">
             <span class="channel-icon">
