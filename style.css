@@ -2026,10 +2026,12 @@ html.cursor-on * {
 
 /* ---------- Contact ---------- */
 .contact {
+  position: relative;
+  z-index: 1;
   padding-bottom: 130px;
 }
 .contact-inner {
-  background: var(--card);
+  background: linear-gradient(165deg, rgba(24, 19, 46, 0.96), rgba(11, 9, 21, 0.98));
   border: 1px solid var(--card-border);
   border-radius: 28px;
   padding: 64px 46px 56px;
@@ -2169,7 +2171,7 @@ a.contact-link:hover {
   max-width: 580px;
   margin: 40px auto 0;
   padding: 36px;
-  background: var(--card);
+  background: rgba(15, 12, 28, 0.97);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
   backdrop-filter: blur(12px);
