@@ -2078,8 +2078,9 @@ html.cursor-on * {
 .contact-channels {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
   margin-bottom: 32px;
 }
 .channel {
@@ -2090,7 +2091,9 @@ html.cursor-on * {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  min-width: 0;
   text-align: center;
   transition: all 0.3s;
   position: relative;
@@ -2114,15 +2117,15 @@ html.cursor-on * {
 }
 .channel-icon {
   position: relative;
+  flex: 0 0 auto;
   width: 48px;
   height: 48px;
-  border-radius: 14px;
+  border-radius: 50%;
   background: var(--grad-soft);
   border: 1px solid var(--card-border);
   display: grid;
   place-items: center;
   color: var(--gold);
-  margin-bottom: 6px;
 }
 .channel-icon svg {
   width: 21px;
@@ -2138,22 +2141,26 @@ html.cursor-on * {
 }
 .channel-value {
   position: relative;
+  max-width: 100%;
+  min-width: 0;
   font-size: 14.5px;
   font-weight: 600;
   color: var(--text);
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 .contact-links {
   position: relative;
   display: flex;
-  gap: 34px;
+  align-items: center;
   justify-content: center;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 .contact-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 0.5rem;
   color: var(--text-dim);
   font-size: 15px;
   transition: color 0.2s;
@@ -2162,7 +2169,21 @@ a.contact-link:hover {
   color: var(--gold);
 }
 .cl-icon {
-  font-size: 17px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--grad-soft);
+  border: 1px solid var(--card-border);
+  color: var(--gold);
+  font-size: 16px;
+  line-height: 1;
+}
+.cl-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ---------- Contact form ---------- */
@@ -2220,7 +2241,17 @@ a.contact-link:hover {
 .form-submit {
   margin-top: 6px;
   width: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 28px;
+  line-height: 1;
+  text-align: center;
+}
+.form-submit svg {
+  flex: 0 0 auto;
 }
 .form-status {
   margin-top: 14px;
@@ -2414,9 +2445,6 @@ a.contact-link:hover {
   .contact-inner {
     padding: 48px 24px;
   }
-  .contact-channels {
-    grid-template-columns: 1fr;
-  }
   .footer-inner {
     justify-content: center;
     text-align: center;
@@ -2463,7 +2491,7 @@ a.contact-link:hover {
     display: none;
   }
   .contact-links {
-    gap: 18px;
+    gap: 1rem;
   }
   .contact-inner {
     padding: 44px 18px;
@@ -2486,7 +2514,11 @@ a.contact-link:hover {
     font-size: 16px;
   }
   .contact-channels {
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .form-submit {
+    min-height: 52px;
   }
 }
 
