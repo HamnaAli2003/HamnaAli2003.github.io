@@ -308,27 +308,6 @@ if (contactForm) {
   });
 }
 
-/* ---------- Project filters ---------- */
-const filters = document.getElementById("filters");
-const projectsGrid = document.getElementById("projectsGrid");
-
-filters.querySelectorAll(".filter").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    filters.querySelectorAll(".filter").forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    const active = btn.dataset.filter;
-    projectsGrid.querySelectorAll(".project-card").forEach((card) => {
-      const cats = card.dataset.cat.split(" ");
-      const show = active === "all" || cats.includes(active);
-      card.classList.toggle("hidden", !show);
-      if (show) {
-        card.style.animation = "none";
-        void card.offsetHeight;
-        card.style.animation = "";
-      }
-    });
-  });
-});
 /* ---------- Theme + accent switcher ---------- */
 (function () {
   var root = document.documentElement;
@@ -361,56 +340,96 @@ filters.querySelectorAll(".filter").forEach((btn) => {
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") menu.classList.remove("open"); });
   mark();
 })();
-/* ---------- Project preview lightbox ---------- */
+/* ---------- Projects carousel ---------- */
 (function () {
-  var modal = document.getElementById("previewModal");
-  if (!modal) return;
-  var video = document.getElementById("previewVideo");
-  var titleEl = document.getElementById("previewTitle");
-  var tagEl = document.getElementById("previewTag");
-  var counterEl = document.getElementById("previewCounter");
-  var buttons = Array.prototype.slice.call(document.querySelectorAll(".preview-btn"));
-  if (!buttons.length || !video) return;
-  var index = 0;
+  var root = document.getElementById("projectsCarousel");
+  if (!root) return;
+  var viewport = root.querySelector(".carousel-viewport");
+  var track = root.querySelector(".carousel-track");
+  if (!viewport || !track) return;
+  var originals = Array.prototype.slice.call(track.children);
+  if (!originals.length) return;
 
-  function render(i) {
-    index = (i + buttons.length) % buttons.length;
-    var b = buttons[index];
-    titleEl.textContent = b.dataset.title || "";
-    tagEl.textContent = b.dataset.tag || "";
-    if (counterEl) counterEl.textContent = (index + 1) + " / " + buttons.length;
-    video.src = b.dataset.video;
-    video.currentTime = 0;
-    var p = video.play();
-    if (p && p.catch) p.catch(function () {});
-  }
-  function open(i) {
-    render(i);
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("locked");
-  }
-  function close() {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("locked");
-    video.pause();
-    video.removeAttribute("src");
-    video.load();
+  originals.forEach(function (slide) {
+    var clone = slide.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    track.appendChild(clone);
+  });
+  var slides = Array.prototype.slice.call(track.children);
+  var oneSet = 0;
+
+  function measure() {
+    var w = slides[originals.length].offsetLeft - slides[0].offsetLeft;
+    oneSet = w > 0 ? w : track.scrollWidth / 2;
   }
 
-  buttons.forEach(function (btn, i) {
-    btn.addEventListener("click", function () { open(i); });
+  var offset = 0, target = 0, speed = 55, paused = false, dragging = false;
+  var last = performance.now(), startX = 0, startTarget = 0, startOffset = 0;
+
+  function frame(now) {
+    var dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    if (!paused && !dragging) target += speed * dt;
+    offset += (target - offset) * Math.min(1, dt * 9);
+    if (oneSet > 0) {
+      var m = ((offset % oneSet) + oneSet) % oneSet;
+      track.style.transform = "translate3d(" + (-m) + "px,0,0)";
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function stepWidth() {
+    return slides[1] ? (slides[1].offsetLeft - slides[0].offsetLeft) : 320;
+  }
+  var prev = root.querySelector(".carousel-prev");
+  var next = root.querySelector(".carousel-next");
+  if (prev) prev.addEventListener("click", function () { target -= stepWidth(); });
+  if (next) next.addEventListener("click", function () { target += stepWidth(); });
+
+  viewport.addEventListener("pointerdown", function (e) {
+    dragging = true;
+    startX = e.clientX; startTarget = target; startOffset = offset;
+    viewport.classList.add("dragging");
   });
-  modal.querySelectorAll("[data-close]").forEach(function (el) {
-    el.addEventListener("click", close);
+  viewport.addEventListener("pointermove", function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    target = startTarget - dx;
+    offset = startOffset - dx;
   });
-  modal.querySelector(".preview-prev").addEventListener("click", function () { render(index - 1); });
-  modal.querySelector(".preview-next").addEventListener("click", function () { render(index + 1); });
-  document.addEventListener("keydown", function (e) {
-    if (!modal.classList.contains("open")) return;
-    if (e.key === "Escape") close();
-    else if (e.key === "ArrowLeft") render(index - 1);
-    else if (e.key === "ArrowRight") render(index + 1);
-  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    viewport.classList.remove("dragging");
+  }
+  viewport.addEventListener("pointerup", endDrag);
+  viewport.addEventListener("pointercancel", endDrag);
+  viewport.addEventListener("pointerleave", endDrag);
+
+  root.addEventListener("mouseenter", function () { paused = true; });
+  root.addEventListener("mouseleave", function () { paused = false; });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          var p = v.play();
+          if (p && p.catch) p.catch(function () {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { root: viewport, threshold: 0.4 });
+    slides.forEach(function (slide) {
+      var v = slide.querySelector("video");
+      if (v) io.observe(v);
+    });
+  }
+
+  window.addEventListener("resize", measure);
+  window.addEventListener("load", measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  measure();
+  requestAnimationFrame(function (t) { last = t; requestAnimationFrame(frame); });
 })();

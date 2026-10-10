@@ -370,266 +370,118 @@
         <span class="sec-label">Projects</span>
         <h2 class="sec-title">Things I've <span class="gradient-text">built.</span></h2>
       </div>
-      <div class="filters reveal" id="filters">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="featured">Featured</button>
-        <button class="filter" data-filter="web">Web Apps</button>
-        <button class="filter" data-filter="mobile">Mobile</button>
-        <button class="filter" data-filter="learning">Learning</button>
-      </div>
+      <div class="carousel reveal" id="projectsCarousel">
+        <div class="carousel-viewport" id="carouselViewport">
+          <div class="carousel-track" id="carouselTrack">
 
-      <div class="projects-grid" id="projectsGrid">
-
-        <article class="project-card spotlight reveal" data-cat="featured web">
-          <div class="card-visual visual-brand">
-            <div class="brand-ui">
-              <div class="bru-top"><span>Taskly</span><span class="bru-dot"></span></div>
-              <div class="bru-boards">
-                <div class="bru-col"><i class="bru-h"></i><i class="bru-line"></i><i class="bru-line"></i><i class="bru-line"></i></div>
-                <div class="bru-col"><i class="bru-h"></i><i class="bru-line"></i><i class="bru-line"></i></div>
-                <div class="bru-col"><i class="bru-h"></i><i class="bru-line"></i></div>
+            <article class="carousel-slide">
+              <div class="slide-media">
+                <video class="slide-video" src="assets/videos/task-manager.mp4" muted loop playsinline preload="metadata"></video>
+                <span class="slide-badge">Web App</span>
               </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-hot">Featured</span><span class="tag-tech">Web App</span></div>
-            <h3>Task Manager</h3>
-            <p>A full-featured task &amp; project manager with kanban boards, priorities, statuses and everything you need to keep work on track — a favourite collaboration project.</p>
-            <div class="card-tech">
-              <span>React</span><span>TypeScript</span><span>Vite</span><span>LocalStorage</span>
-            </div>
-            <div class="card-links">
-              <button class="preview-btn" type="button" data-video="assets/videos/task-manager.mp4" data-title="Task Manager" data-tag="Web App">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                Preview
-              </button>
-              <a href="https://github.com/HamnaAli2003/Task-Manager" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card spotlight reveal" data-cat="featured mobile">
-          <div class="card-visual visual-gold">
-            <div class="fake-phone">
-              <div class="fp-notch"></div>
-              <div class="fp-bal">$1,284.40</div>
-              <div class="fp-row"><span>Gold Rate</span><b>↑ 2.4%</b></div>
-              <div class="fp-card">•••• 4821</div>
-              <div class="fp-actions"><i></i><i></i><i></i></div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-hot">Featured</span><span class="tag-tech">TypeScript</span></div>
-            <h3>GoldBlock</h3>
-            <p>Modern mobile banking app with user authentication, a full digital banking interface and virtual card creation & management built on Firebase.</p>
-            <div class="card-tech">
-              <span>React Native</span><span>Expo</span><span>Firebase</span><span>Context API</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/HamnaAli2003/GoldBlockApp" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card spotlight reveal" data-cat="featured web">
-          <div class="card-visual visual-eat">
-            <div class="eat-hero">
-              <div class="eat-title">Cheat &amp; Eat</div>
-              <div class="eat-row"><div class="eat-dish"></div><div class="eat-dish"></div><div class="eat-dish"></div></div>
-              <div class="eat-recipe"></div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-hot">Featured</span><span class="tag-tech">Full-Stack</span></div>
-            <h3>Cheat &amp; Eat</h3>
-            <p>A food &amp; recipe platform for browsing, searching and managing recipes — with a dedicated backend API powering the experience.</p>
-            <div class="card-tech">
-              <span>React</span><span>Node.js</span><span>REST API</span><span>Responsive UI</span>
-            </div>
-            <div class="card-links">
-              <button class="preview-btn" type="button" data-video="assets/videos/cheat-and-eat.mp4" data-title="Cheat &amp; Eat" data-tag="Full-Stack">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                Preview
-              </button>
-              <a href="https://github.com/HamnaAli2003/cheat-and-eat" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                Frontend Repo
-              </a>
-              <a href="https://github.com/HamnaAli2003/cheat-and-eat-backend" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                Backend Repo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card spotlight reveal" data-cat="featured web">
-          <div class="card-visual visual-news">
-            <div class="news-top">
-              <div class="news-logo">NewsHub</div>
-              <div class="news-meta"></div>
-            </div>
-            <div class="news-card">
-              <div class="news-zone"></div>
-              <div class="news-lines"><i></i><i></i><i></i></div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-hot">Featured</span><span class="tag-tech">React</span></div>
-            <h3>NewsHub</h3>
-            <p>A React news app that pulls the latest headlines from NewsAPI, browsable by category with infinite scrolling and a top loading bar.</p>
-            <div class="card-tech">
-              <span>React Router</span><span>NewsAPI</span><span>Bootstrap</span><span>Vite</span>
-            </div>
-            <div class="card-links">
-              <button class="preview-btn" type="button" data-video="assets/videos/news-hub.mp4" data-title="NewsHub" data-tag="Web App">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                Preview
-              </button>
-              <a href="https://github.com/HamnaAli2003/NewsApp" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card spotlight reveal" data-cat="web">
-          <div class="card-visual visual-text">
-            <div class="text-window">
-              <div class="text-bar"><span></span><span></span><span></span><b>textutils</b></div>
-              <div class="text-area">TEXT</div>
-              <div class="text-actions"><i></i><i></i><i></i><i></i></div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-tech">React</span><span class="tag-tech">Vite</span></div>
-            <h3>TextUtils</h3>
-            <p>A responsive React utility suite — case conversion, whitespace cleaning, clipboard copy, word & character counters, reading time and a dark/light theme.</p>
-            <div class="card-tech">
-              <span>React</span><span>Bootstrap 5</span><span>React Router</span><span>Dark Mode</span>
-            </div>
-            <div class="card-links">
-              <button class="preview-btn" type="button" data-video="assets/videos/textutils.mp4" data-title="TextUtils" data-tag="Web App">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                Preview
-              </button>
-              <a href="https://github.com/HamnaAli2003/TextUtils-Website" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card spotlight reveal" data-cat="web">
-          <div class="card-visual visual-text">
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-tech">React</span><span class="tag-tech">Web App</span></div>
-            <h3>UtilityAssistance</h3>
-            <p>A responsive web application that brings everyday utility services together in one place — helping users find assistance and manage their requests through a clean, easy-to-use interface.</p>
-            <div class="card-tech">
-              <span>React</span><span>JavaScript</span><span>CSS</span><span>Responsive UI</span>
-            </div>
-            <div class="card-links">
-              <button class="preview-btn" type="button" data-video="assets/videos/utilityassistance.mp4" data-title="UtilityAssistance" data-tag="Web App">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                Preview
-              </button>
-              <a href="https://github.com/HamnaAli2003" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 1.01-.32 3.3 1.23 3.3 1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card spotlight reveal" data-cat="featured mobile">
-          <div class="card-visual visual-mech">
-            <div class="mech-phone">
-              <div class="mech-head">
-                <span class="mech-dot"></span><span>Nearby Mechanics</span>
+              <div class="slide-body">
+                <h3>Task Manager</h3>
+                <p>A full-featured task &amp; project manager with kanban boards, priorities, statuses and everything you need to keep work on track — a favourite collaboration project.</p>
+                <div class="card-tech">
+                  <span>React</span><span>TypeScript</span><span>Vite</span><span>LocalStorage</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/HamnaAli2003/Task-Manager" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 1.01-.32 3.3 1.23 3.3 1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
+                    View on GitHub
+                  </a>
+                </div>
               </div>
-              <div class="mech-list">
-                <div class="mech-item"><div class="mech-ava"></div><div class="mech-info"><b>Expert Motors</b><span>★ 4.8 · 1.2 km</span></div><button>Book</button></div>
-                <div class="mech-item"><div class="mech-ava"></div><div class="mech-info"><b>AutoCare</b><span>★ 4.6 · 2.4 km</span></div><button>Book</button></div>
+            </article>
+
+            <article class="carousel-slide">
+              <div class="slide-media">
+                <video class="slide-video" src="assets/videos/cheat-and-eat.mp4" muted loop playsinline preload="metadata"></video>
+                <span class="slide-badge">Full-Stack</span>
               </div>
-              <div class="mech-map"></div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-hot">Featured</span><span class="tag-tech">Mobile</span></div>
-            <h3>Mechanic Booking App</h3>
-            <p>A mobile app that lets users find, book and chat with mechanics for car &amp; bike services — with secure Firebase auth and Google Maps location services.</p>
-            <div class="card-tech">
-              <span>React Native</span><span>Expo</span><span>Firebase Auth</span><span>Google Maps API</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/HamnaAli2003/FYP-E-MECHANICS-" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </article>
+              <div class="slide-body">
+                <h3>Cheat &amp; Eat</h3>
+                <p>A food &amp; recipe platform for browsing, searching and managing recipes — with a dedicated backend API powering the experience.</p>
+                <div class="card-tech">
+                  <span>React</span><span>Node.js</span><span>REST API</span><span>Responsive UI</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/HamnaAli2003/cheat-and-eat" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 1.01-.32 3.3 1.23 3.3 1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
+                    Frontend Repo
+                  </a>
+                  <a href="https://github.com/HamnaAli2003/cheat-and-eat-backend" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 1.01-.32 3.3 1.23 3.3 1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
+                    Backend Repo
+                  </a>
+                </div>
+              </div>
+            </article>
 
-        <article class="project-card spotlight reveal" data-cat="web learning">
-          <div class="card-visual visual-bank">
-            <div class="bank-calc">
-              <div class="bank-screen">$ 0.00</div>
-              <div class="bank-keys"><span>7</span><span>8</span><span>9</span><span>C</span><span>4</span><span>5</span><span>6</span><span>+</span><span>1</span><span>2</span><span>3</span><span>-</span><span>0</span><span>.</span><span>=</span><span>×</span></div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-tech">C++</span><span class="tag-tech">OOP</span></div>
-            <h3>Online Banking System</h3>
-            <p>A terminal banking system demonstrating OOP principles — inheritance, encapsulation and polymorphism — fully tested in Dev C++.</p>
-            <div class="card-tech">
-              <span>C++ OOP</span><span>Data Structures</span><span>Error Handling</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/HamnaAli2003" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                Academic Project
-              </a>
-            </div>
-          </div>
-        </article>
+            <article class="carousel-slide">
+              <div class="slide-media">
+                <video class="slide-video" src="assets/videos/news-hub.mp4" muted loop playsinline preload="metadata"></video>
+                <span class="slide-badge">Web App</span>
+              </div>
+              <div class="slide-body">
+                <h3>NewsHub</h3>
+                <p>A React news app that pulls the latest headlines from NewsAPI, browsable by category with infinite scrolling and a top loading bar.</p>
+                <div class="card-tech">
+                  <span>React Router</span><span>NewsAPI</span><span>Bootstrap</span><span>Vite</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/HamnaAli2003/NewsApp" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 1.01-.32 3.3 1.23 3.3 1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </article>
 
-        <article class="project-card spotlight reveal" data-cat="learning">
-          <div class="card-visual visual-learn">
-            <div class="learn-grid">
-              <span class="lg-calc">÷</span>
-              <span class="lg-game">✊✌✋</span>
-              <span class="lg-tic"></span>
-              <span class="lg-pal">radar</span>
-              <span class="lg-quiz">Q?</span>
-              <span class="lg-conv">$→€</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags"><span class="tag-tech">Vanilla JS</span></div>
-            <h3>Learning Projects</h3>
-            <p>Seven interactive vanilla JavaScript apps — calculator, currency converter, rock-paper-scissors, tic-tac-toe, palindrome checker, form validation and a JS quiz.</p>
-            <div class="card-tech">
-              <span>HTML5</span><span>CSS3</span><span>JavaScript ES6+</span><span>Fetch API</span>
-            </div>
-            <div class="card-links">
-              <a href="https://github.com/HamnaAli2003/Learning-Projects" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-        </article>
+            <article class="carousel-slide">
+              <div class="slide-media">
+                <video class="slide-video" src="assets/videos/textutils.mp4" muted loop playsinline preload="metadata"></video>
+                <span class="slide-badge">Web App</span>
+              </div>
+              <div class="slide-body">
+                <h3>TextUtils</h3>
+                <p>A responsive React utility suite — case conversion, whitespace cleaning, clipboard copy, word &amp; character counters, reading time and a dark/light theme.</p>
+                <div class="card-tech">
+                  <span>React</span><span>Bootstrap 5</span><span>React Router</span><span>Dark Mode</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/HamnaAli2003/TextUtils-Website" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 1.01-.32 3.3 1.23 3.3 1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </article>
 
+            <article class="carousel-slide">
+              <div class="slide-media">
+                <video class="slide-video" src="assets/videos/utilityassistance.mp4" muted loop playsinline preload="metadata"></video>
+                <span class="slide-badge">Web App</span>
+              </div>
+              <div class="slide-body">
+                <h3>UtilityAssistance</h3>
+                <p>A responsive web application that brings everyday utility services together in one place — helping users find assistance and manage their requests through a clean, easy-to-use interface.</p>
+                <div class="card-tech">
+                  <span>React</span><span>JavaScript</span><span>CSS</span><span>Responsive UI</span>
+                </div>
+                <div class="card-links">
+                  <a href="https://github.com/HamnaAli2003" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 1.01-.32 3.3 1.23 3.3 1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg>
+                    View on GitHub
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous project">&#8249;</button>
+        <button class="carousel-arrow carousel-next" type="button" aria-label="Next project">&#8250;</button>
       </div>
       <div class="projects-more reveal">
         <p>More apps, utilities and experiments live on my GitHub.</p>
@@ -840,23 +692,6 @@
   <button class="to-top" id="toTop" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </button>
-
-  <div class="preview-modal" id="previewModal" aria-hidden="true">
-    <div class="preview-backdrop" data-close></div>
-    <div class="preview-dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
-      <button class="preview-close" type="button" data-close aria-label="Close preview">&times;</button>
-      <div class="preview-media">
-        <button class="preview-nav preview-prev" type="button" aria-label="Previous project">&#8249;</button>
-        <video id="previewVideo" controls playsinline loop preload="metadata"></video>
-        <button class="preview-nav preview-next" type="button" aria-label="Next project">&#8250;</button>
-      </div>
-      <div class="preview-info">
-        <h3 id="previewTitle"></h3>
-        <span class="preview-tag" id="previewTag"></span>
-        <span class="preview-counter" id="previewCounter"></span>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
