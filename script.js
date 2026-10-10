@@ -329,3 +329,35 @@ filters.querySelectorAll(".filter").forEach((btn) => {
     });
   });
 });
+/* ---------- Theme + accent switcher ---------- */
+(function () {
+  var root = document.documentElement;
+  var themeBtn = document.getElementById("themeBtn");
+  var accentBtn = document.getElementById("accentBtn");
+  var menu = document.getElementById("accentMenu");
+  if (!themeBtn || !accentBtn || !menu) return;
+  function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function mark() {
+    menu.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-checked", b.dataset.accent === root.dataset.accent ? "true" : "false");
+    });
+  }
+  themeBtn.addEventListener("click", function () {
+    var t = root.dataset.theme === "light" ? "dark" : "light";
+    root.dataset.theme = t; save("ha-theme", t);
+  });
+  accentBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var open = menu.classList.toggle("open");
+    accentBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  menu.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-accent]");
+    if (!b) return;
+    root.dataset.accent = b.dataset.accent; save("ha-accent", b.dataset.accent); mark();
+    menu.classList.remove("open"); accentBtn.setAttribute("aria-expanded", "false");
+  });
+  document.addEventListener("click", function () { menu.classList.remove("open"); accentBtn.setAttribute("aria-expanded", "false"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") menu.classList.remove("open"); });
+  mark();
+})();
