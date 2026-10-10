@@ -361,3 +361,56 @@ filters.querySelectorAll(".filter").forEach((btn) => {
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") menu.classList.remove("open"); });
   mark();
 })();
+/* ---------- Project preview lightbox ---------- */
+(function () {
+  var modal = document.getElementById("previewModal");
+  if (!modal) return;
+  var video = document.getElementById("previewVideo");
+  var titleEl = document.getElementById("previewTitle");
+  var tagEl = document.getElementById("previewTag");
+  var counterEl = document.getElementById("previewCounter");
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".preview-btn"));
+  if (!buttons.length || !video) return;
+  var index = 0;
+
+  function render(i) {
+    index = (i + buttons.length) % buttons.length;
+    var b = buttons[index];
+    titleEl.textContent = b.dataset.title || "";
+    tagEl.textContent = b.dataset.tag || "";
+    if (counterEl) counterEl.textContent = (index + 1) + " / " + buttons.length;
+    video.src = b.dataset.video;
+    video.currentTime = 0;
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  function open(i) {
+    render(i);
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("locked");
+  }
+  function close() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("locked");
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+  }
+
+  buttons.forEach(function (btn, i) {
+    btn.addEventListener("click", function () { open(i); });
+  });
+  modal.querySelectorAll("[data-close]").forEach(function (el) {
+    el.addEventListener("click", close);
+  });
+  modal.querySelector(".preview-prev").addEventListener("click", function () { render(index - 1); });
+  modal.querySelector(".preview-next").addEventListener("click", function () { render(index + 1); });
+  document.addEventListener("keydown", function (e) {
+    if (!modal.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") render(index - 1);
+    else if (e.key === "ArrowRight") render(index + 1);
+  });
+})();
