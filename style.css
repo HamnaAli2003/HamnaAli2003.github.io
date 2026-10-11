@@ -2653,8 +2653,6 @@ html[data-theme="light"] .contact-form { background: color-mix(in srgb, var(--vi
   touch-action: pan-y;
   -webkit-user-select: none;
   user-select: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 .carousel-viewport.dragging {
   cursor: grabbing;

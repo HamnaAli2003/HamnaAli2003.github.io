@@ -90,49 +90,33 @@ function typeLoop() {
 
 if (!prefersReduced && typedEl) typeLoop();
 
-/* ---------- Custom cursor ---------- */
-const cursorDot = document.getElementById("cursorDot");
-const cursorRing = document.getElementById("cursorRing");
-
-if (finePointer && cursorDot && cursorRing && !prefersReduced) {
-  rootEl.classList.add("cursor-on");
-
-  const targets = "a, button, .spotlight, input, textarea, select, [href]";
-  let ringX = window.innerWidth / 2;
-  let ringY = window.innerHeight / 3;
-
-  window.addEventListener("mousemove", (e) => {
-    cursorDot.style.left = `${e.clientX}px`;
-    cursorDot.style.top = `${e.clientY}px`;
-    ringX = e.clientX;
-    ringY = e.clientY;
-  });
-
-  document.addEventListener("mouseover", (e) => {
-    if (e.target.closest(targets)) {
-      cursorDot.classList.add("grow");
-      cursorRing.classList.add("grow");
-    }
-  });
-
-  document.addEventListener("mouseout", (e) => {
-    if (e.target.closest(targets)) {
-      cursorDot.classList.remove("grow");
-      cursorRing.classList.remove("grow");
-    }
-  });
-
-  let cursorX = ringX;
-  let cursorY = ringY;
-  function tickCursor() {
-    cursorX += (ringX - cursorX) * 0.16;
-    cursorY += (ringY - cursorY) * 0.16;
-    cursorRing.style.left = `${cursorX}px`;
-    cursorRing.style.top = `${cursorY}px`;
-    requestAnimationFrame(tickCursor);
+/* ---------- Favicon follows the accent color ---------- */
+(function () {
+  var link = document.querySelector('link[rel="icon"]');
+  if (!link) return;
+  function update() {
+    var cs = getComputedStyle(document.documentElement);
+    var gold = cs.getPropertyValue("--gold").trim() || "#f6c453";
+    var pink = cs.getPropertyValue("--pink").trim() || "#ec5bac";
+    var violet = cs.getPropertyValue("--violet").trim() || "#8b5cf6";
+    var svg =
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>" +
+      "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>" +
+      "<stop offset='0' stop-color='" + gold + "'/>" +
+      "<stop offset='0.55' stop-color='" + pink + "'/>" +
+      "<stop offset='1' stop-color='" + violet + "'/>" +
+      "</linearGradient></defs>" +
+      "<rect width='24' height='24' rx='7' fill='url(#g)'/>" +
+      "<text x='12' y='16.4' font-family='Arial,Helvetica,sans-serif' font-size='9' font-weight='700' text-anchor='middle' fill='#0d0b16'>HA</text>" +
+      "</svg>";
+    link.setAttribute("href", "data:image/svg+xml," + encodeURIComponent(svg));
   }
-  tickCursor();
-}
+  update();
+  new MutationObserver(update).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-accent", "data-theme"],
+  });
+})();
 
 /* ---------- Reveal on scroll ---------- */
 const revealEls = document.querySelectorAll(".reveal");
