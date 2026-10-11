@@ -391,7 +391,7 @@ if (contactForm) {
     oneSet = w > 0 ? w : track.scrollWidth / 2;
   }
 
-  var offset = 0, target = 0, speed = 55, paused = false, dragging = false;
+  var offset = 0, target = 0, speed = 55, paused = false, dragging = false, dragMoved = false;
   var last = performance.now(), startX = 0, startTarget = 0, startOffset = 0;
 
   function frame(now) {
@@ -416,12 +416,14 @@ if (contactForm) {
 
   viewport.addEventListener("pointerdown", function (e) {
     dragging = true;
+    dragMoved = false;
     startX = e.clientX; startTarget = target; startOffset = offset;
     viewport.classList.add("dragging");
   });
   viewport.addEventListener("pointermove", function (e) {
     if (!dragging) return;
     var dx = e.clientX - startX;
+    if (Math.abs(dx) > 5) dragMoved = true;
     target = startTarget - dx;
     offset = startOffset - dx;
   });
@@ -430,6 +432,17 @@ if (contactForm) {
     dragging = false;
     viewport.classList.remove("dragging");
   }
+  viewport.addEventListener("click", function (e) {
+    if (e.target.closest("a")) return;
+    if (dragMoved) return;
+    var slide = e.target.closest(".carousel-slide");
+    if (!slide) return;
+    var v = slide.querySelector("video");
+    if (!v) return;
+    var src = v.currentSrc || v.getAttribute("src");
+    if (!src) return;
+    window.open(new URL(src, location.href).href, "_blank", "noopener");
+  });
   viewport.addEventListener("pointerup", endDrag);
   viewport.addEventListener("pointercancel", endDrag);
   viewport.addEventListener("pointerleave", endDrag);
