@@ -2784,3 +2784,21 @@ html[data-theme="light"] .contact-form { background: color-mix(in srgb, var(--vi
     right: 2px;
   }
 }
+
+/* ---------- Keep components in place on hover (no lift/shift) ---------- */
+.links .nav-cta:hover,
+.btn-primary:hover,
+.btn-ghost:hover,
+.qs-link:hover,
+.stat-tile:hover,
+.timeline-card:hover,
+.tl-tags span:hover,
+.skill-group:hover,
+.chip-cloud span:hover,
+.edu-card:hover,
+.channel:hover,
+.footer-social a:hover,
+.to-top:hover,
+.theme-btn:hover {
+  transform: none;
+}

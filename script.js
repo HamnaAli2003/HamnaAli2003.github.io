@@ -90,6 +90,50 @@ function typeLoop() {
 
 if (!prefersReduced && typedEl) typeLoop();
 
+/* ---------- Custom cursor ---------- */
+const cursorDot = document.getElementById("cursorDot");
+const cursorRing = document.getElementById("cursorRing");
+
+if (finePointer && cursorDot && cursorRing && !prefersReduced) {
+  rootEl.classList.add("cursor-on");
+
+  const targets = "a, button, .spotlight, input, textarea, select, [href]";
+  let ringX = window.innerWidth / 2;
+  let ringY = window.innerHeight / 3;
+
+  window.addEventListener("mousemove", (e) => {
+    cursorDot.style.left = `${e.clientX}px`;
+    cursorDot.style.top = `${e.clientY}px`;
+    ringX = e.clientX;
+    ringY = e.clientY;
+  });
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(targets)) {
+      cursorDot.classList.add("grow");
+      cursorRing.classList.add("grow");
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(targets)) {
+      cursorDot.classList.remove("grow");
+      cursorRing.classList.remove("grow");
+    }
+  });
+
+  let cursorX = ringX;
+  let cursorY = ringY;
+  function tickCursor() {
+    cursorX += (ringX - cursorX) * 0.16;
+    cursorY += (ringY - cursorY) * 0.16;
+    cursorRing.style.left = `${cursorX}px`;
+    cursorRing.style.top = `${cursorY}px`;
+    requestAnimationFrame(tickCursor);
+  }
+  tickCursor();
+}
+
 /* ---------- Favicon follows the accent color ---------- */
 (function () {
   var link = document.querySelector('link[rel="icon"]');
