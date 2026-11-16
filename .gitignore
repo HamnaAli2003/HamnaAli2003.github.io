@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-ssr
+*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+preview.log
+
+# TypeScript build metadata
+*.tsbuildinfo
+
+# Large unreleased source media; web-ready copies live in public/assets/videos
+src/assets/*.mp4
