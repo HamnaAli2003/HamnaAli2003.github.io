@@ -1,4 +1,4 @@
-const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* Site animations are always on; the OS reduced-motion setting is not used to freeze them. */
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 /* ---------- Preloader ---------- */
@@ -48,7 +48,7 @@ navLinks.addEventListener("click", (e) => {
 });
 
 document.getElementById("toTop").addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 /* ---------- Typed effect ---------- */
@@ -88,13 +88,13 @@ function typeLoop() {
   setTimeout(typeLoop, deleting ? 34 : 78);
 }
 
-if (!prefersReduced && typedEl) typeLoop();
+if (typedEl) typeLoop();
 
 /* ---------- Custom cursor ---------- */
 const cursorDot = document.getElementById("cursorDot");
 const cursorRing = document.getElementById("cursorRing");
 
-if (finePointer && cursorDot && cursorRing && !prefersReduced) {
+if (finePointer && cursorDot && cursorRing) {
   rootEl.classList.add("cursor-on");
 
   const targets = "a, button, .spotlight, input, textarea, select, [href]";
@@ -206,10 +206,6 @@ const statNums = document.querySelectorAll(".stat-num");
 const animateCount = (el) => {
   const target = parseInt(el.dataset.count, 10) || 0;
   const suffix = el.dataset.suffix || "";
-  if (prefersReduced) {
-    el.textContent = target + suffix;
-    return;
-  }
   const duration = 1300;
   const start = performance.now();
   const step = (now) => {
@@ -243,11 +239,6 @@ const fillBars = () => {
     const num = item.querySelector(".exp-top b");
     const level = parseInt(bar.dataset.level, 10) || 0;
     const fill = parseInt(num.dataset.fill, 10) || 0;
-    if (prefersReduced) {
-      bar.style.width = `${level}%`;
-      num.textContent = `${fill}%`;
-      return;
-    }
     setTimeout(() => {
       bar.style.width = `${level}%`;
       num.textContent = `${fill}%`;
@@ -273,8 +264,7 @@ if (expertiseSection) {
 /* ---------- Spotlight + tilt cards ---------- */
 const spotlightCards = document.querySelectorAll(".spotlight");
 
-if (!prefersReduced) {
-  spotlightCards.forEach((card) => {
+spotlightCards.forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
       const px = e.clientX - rect.left;
@@ -293,7 +283,6 @@ if (!prefersReduced) {
       card.classList.remove("tilting");
     });
   });
-}
 
 /* ---------- Contact form ---------- */
 const contactForm = document.getElementById("contactForm");

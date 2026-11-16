@@ -2527,18 +2527,10 @@ a.contact-link:hover {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  html {
-    scroll-behavior: auto;
-  }
-}
+/* ---------- Reduced motion ---------- */
+/* Site animations are intentional and always on. Visitors who need
+   reduced motion can use the in-page controls; we no longer freeze
+   every animation when the OS requests it. */
 /* ---------- Color themes ---------- */
 html[data-accent="ocean"] { --gold:#5eead4; --pink:#38bdf8; --violet:#6366f1; --gold-rgb:94,234,212; --pink-rgb:56,189,248; --violet-rgb:99,102,241; }
 html[data-accent="emerald"] { --gold:#bef264; --pink:#34d399; --violet:#0ea5e9; --gold-rgb:190,242,100; --pink-rgb:52,211,153; --violet-rgb:14,165,233; }
